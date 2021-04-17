@@ -1,3 +1,20 @@
+//string
+var string = 'javaScript'
+console.log(string)
+//number
+var num = 14
+console.log(num)
+//boolean
+var bool = true
+console.log(bool)
+//undefined
+var object 
+console.log(object)
+//null
+object = null
+console.log(object)
+
+
 const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
@@ -7,6 +24,7 @@ var engine, world;
 var box1, pig1,pig3;
 var backgroundImg,platform;
 var bird, slingshot;
+var gameState = "onSling";
 
 
 function preload() {
@@ -69,16 +87,18 @@ function draw(){
 }
 
 function mouseDragged(){
+    if(gameState!=="launch")
     Matter.Body.setPosition(bird.body, {x: mouseX , y: mouseY});
 }
 
 
 function mouseReleased(){
     slingshot.fly();
+    gameState = "launch";
 }
 
 function keyPressed(){
     if(keyCode === 32){
-        slingshot.attach(bird.body);
+        //slingshot.attach(bird.body);
     }
 }
